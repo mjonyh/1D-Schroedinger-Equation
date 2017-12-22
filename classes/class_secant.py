@@ -9,7 +9,7 @@ class Secant_Method(object):
 		'''
 
 	def secant(self, x):
-		print 'Searching the root. Started from ', x
+		print ('Searching the root. Started from ', x)
 
 		dx = 0.01
 		error = 1e-6
@@ -34,6 +34,6 @@ class Secant_Method(object):
 			count += 1
 			#print 'x: ', x1
 
-		print 'The root is: ', x1, ' after iteration: ', count
+		print ('The root is: ', x1, ' after iteration: ', count)
 
 		return x1
