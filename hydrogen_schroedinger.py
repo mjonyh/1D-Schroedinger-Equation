@@ -14,8 +14,9 @@ Potential function of the quantum system.
 
 def v(x):
     'potential for hydrogen atom'
+    l = 0.0
 
-    return -1.0/x
+    return -1.0/x + l * (l + 1.0)/(x*x)
 
 
 '''
@@ -133,7 +134,7 @@ while l < 0:
     plt.plot(x, el, 'r')
 
     'for loop'
-    l += 0.1
+    l += 0.3
 
 'Plotting graph'
 plt.figure(1)
