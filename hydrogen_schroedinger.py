@@ -59,6 +59,19 @@ def normalized(u):
 
 
 '''
+Function used to calculate the probability
+'''
+
+
+def probability(u):
+    y = []
+    for i in range(len(u)):
+        y.append(u[i] * u[i])
+
+    return y
+
+
+'''
 Function used to make list of the eigenenery to plot.
 ---------------------------------------------------------
 '''
@@ -124,6 +137,9 @@ while l < 0:
     'Normalizing the eigenfunction'
     u = normalized(u)
 
+    'Probability of eigenfunction'
+    u = probability(u)
+
     'list to plot eigenvalue'
     el = eigen(x, l)
 
@@ -141,7 +157,7 @@ plt.figure(1)
 plt.xlabel('Position x')
 plt.ylabel('Magnitude')
 plt.title(title)
-plt.legend(['$V(x)$', '$\phi(x)$', '$E_n$'], loc=4)
-plt.axis([0, 20, -5, 0.5])
+plt.legend(['$V(x)$', 'p(x)', '$E_n$'], loc=4)
+plt.axis([0, 20, -1, 0.5])
 
 plt.show()
