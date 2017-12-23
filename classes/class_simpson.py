@@ -21,5 +21,5 @@ class Simpson_Method(object):
 
 		s = (s1 + 4*s0 + s2) * h / 3.0
 
-		print ('Integrated result: ', s)
+		# print ('Integrated result: ', s)
 		return s
