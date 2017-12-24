@@ -9,11 +9,11 @@ from classes.class_simpson import Simpson_Method
 Please provide the input value for solving SE of Hydrogen
 Atom
 =========================================================
-l is the potential parameter
 eigen_min is the lowest probable eigen value
 potential_initial_position is the lowest position of potential
 potential_final_position is the highest position of potential
-
+number_of_eigen is the number of eigenfunction
+=========================================================
 '''
 
 angular_l = int(input("Please provide the total angular momentum: "))
@@ -41,7 +41,7 @@ Help function to discretization of the analytical form
 '''
 
 
-def anal_disc():
+def numeric_potential():
     'Discretization of the analytical form will be done'
     initial = potential_initial_position
     h = 0.01
@@ -76,6 +76,7 @@ def normalized(u):
 
 '''
 Function used to calculate the probability
+--------------------------------------------------------
 '''
 
 
@@ -128,7 +129,7 @@ Stepping into the main program.
 
 
 'Plotting potential'
-x, v_x = anal_disc()
+x, v_x = numeric_potential()
 plt.plot(x, v_x, 'k')
 
 
@@ -141,9 +142,7 @@ find = Secant_Method(wavefunction.numerov)
 'Calling Simpson Method to integrate'
 integration = Simpson_Method()
 
-# 'Initial guess for eigen value'
-# l = eigen_min
-
+'Figure title'
 title = 'Eigenvalue(s) = '
 
 y_min = 0
