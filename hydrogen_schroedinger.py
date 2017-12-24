@@ -16,7 +16,7 @@ potential_final_position is the highest position of potential
 
 '''
 
-angular_l = 0.0
+angular_l = int(input("Please provide the total angular momentum: "))
 
 number_of_eigen = 5
 eigen_min = -10
@@ -32,7 +32,7 @@ Potential function of the quantum system.
 def v(x):
     'potential for hydrogen atom'
 
-    return -1.0/x + angular_l * (angular_l + 1.0)/(x*x)
+    return -1.0/x + angular_l * (angular_l + 1.0)/(2*x*x)
 
 
 '''
