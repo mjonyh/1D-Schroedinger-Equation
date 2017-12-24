@@ -16,7 +16,7 @@ potential_final_position is the highest position of potential
 
 '''
 
-l = 0.0
+angular_l = 0.0
 
 number_of_eigen = 5
 eigen_min = -10
@@ -32,7 +32,7 @@ Potential function of the quantum system.
 def v(x):
     'potential for hydrogen atom'
 
-    return -1.0/x + l * (l + 1.0)/(x*x)
+    return -1.0/x + angular_l * (angular_l + 1.0)/(x*x)
 
 
 '''
@@ -150,16 +150,14 @@ y_min = 0
 y_max = 0
 count = 0
 while count < number_of_eigen:
-    eigen_bak = eigen_min
-
     'Searching for the eigenvalue.'
-    l = find.secant(eigen_min)
+    eigen_value = find.secant(eigen_min)
 
-    if(l != eigen_bak):
-        title = title + str("%.3f" % round(l, 3)) + ', '
+    if(eigen_value < 0):
+        title = title + str("%.3f" % round(eigen_value, 3)) + ', '
 
         'Calculating the eigenfunction.'
-        x, u = wavefunction.numerov(l)
+        x, u = wavefunction.numerov(eigen_value)
 
         'Normalizing the eigenfunction'
         u = normalized(u)
@@ -168,7 +166,7 @@ while count < number_of_eigen:
         p = probability(u)
 
         'list to plot eigenvalue'
-        el = eigen(x, l)
+        el = eigen(x, eigen_value)
 
         'Adding eigenvalue and normalized wavefunction'
         n_u = mixfunction(u, el)
@@ -180,7 +178,7 @@ while count < number_of_eigen:
         plt.plot(x, n_p, 'g')
         plt.plot(x, el, 'r')
 
-    eigen_min = l/3.0
+    eigen_min = eigen_value/3.0
 
     if(min(n_u) < y_min):
         y_min = min(n_u)
@@ -197,6 +195,7 @@ plt.xlabel('Position x')
 plt.ylabel('Magnitude')
 plt.title(title)
 plt.legend(['$V(x)$', '$\phi (x)$', '$Probability(x)$', '$E_n$'], loc=4)
-plt.axis([potential_initial_position, potential_final_position, y_min - 0.1, y_max + 0.1])
+plt.axis([potential_initial_position, potential_final_position,
+          y_min - 0.1, y_max + 0.1])
 
 plt.show()
