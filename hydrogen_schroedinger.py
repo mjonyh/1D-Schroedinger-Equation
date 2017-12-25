@@ -148,7 +148,7 @@ title = 'Eigenvalue(s) = '
 y_min = 0
 y_max = 0
 count = 0
-while count < number_of_eigen:
+while (count < number_of_eigen and eigen_min < 0):
     'Searching for the eigenvalue.'
     eigen_value = find.secant(eigen_min)
 
